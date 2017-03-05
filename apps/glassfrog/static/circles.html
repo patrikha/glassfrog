@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Glassfrog circles sample</title>
+    <link rel="stylesheet" href="/glassfrog/circles.css" type="text/css" />
+    <script type="text/javascript" src="/glassfrog/external/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="/glassfrog/external/d3.min.js"></script>
+  </head>
+  <body>
+    <h2>My organization</h2>
+    <svg width="600" height="600"></svg>
+    <script src="/glassfrog/circles.js"></script>
+    <script>
+     $(document).ready(function () {
+       $.ajax({
+         url: "/glassfrog/get_circles",
+         dataType: "json",
+         success: function(data) {
+           draw(data);
+         },
+         error: function() {
+           alert('Could not get data from backend!');
+         }
+       });
+     });
+    </script>
+  </body>
+</html>
