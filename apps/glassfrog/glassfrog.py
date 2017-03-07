@@ -30,7 +30,7 @@ class Organization(object):
             org_circle = Circle(circle)
             for role in circle['links']['roles']:
                 org_circle.roles.append(self.find_role(role)['name'])
-        circles.append(org_circle)
+            circles.append(org_circle)
         return circles
 
     def get_d3(self):
