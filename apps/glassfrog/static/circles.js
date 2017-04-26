@@ -16,7 +16,7 @@ function draw(root) {
     .enter().append("g")
       .attr("class", function(d) { return d.children ? "node" : "leaf node"; })
       .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
-
+      
   node.append("title")
       .text(function(d) { return d.data.name + "\n" + format(d.value); });
 
@@ -25,5 +25,10 @@ function draw(root) {
 
   node.filter(function(d) { return !d.children; }).append("text")
       .attr("dy", "0.3em")
+      .text(function(d) { return d.data.name.substring(0, d.r / 3); });
+      
+  node.filter(function(d) { return d.children; }).append("text")
+      .attr("dy", "0.5em")
+      .attr("y", function(d) { return -(d.r); })
       .text(function(d) { return d.data.name.substring(0, d.r / 3); });
 }
